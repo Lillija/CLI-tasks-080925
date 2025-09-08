@@ -13,7 +13,7 @@
 
 
 while(true){
-    $input = readline("Some user input");
+    $input = readline("Do you want to continue? ");
     if ($input == 'n'){
         exit;
     }
