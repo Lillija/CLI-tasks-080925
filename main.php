@@ -13,6 +13,10 @@
 
 $tasks = ["first task", "second task", "third task"];
 
+class TaskList{
+    
+}
+
 class Task {
     public $id;
     public $content;
