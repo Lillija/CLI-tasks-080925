@@ -28,7 +28,7 @@ class Task
 
     public function display()
     {
-        echo "\nThe task ID is $this->id\n";
+        echo "\n ID: $this->id\n";
         echo "content: \n $this->content";
     }
 }
@@ -78,7 +78,7 @@ while (true) {
     $inp = readline("Choose 1 - to show tasks, \n 2 - to add a new task, \n 3 - to delete a task, \n 4 - to edit an existing task, \n 0 - to exit. \n");
     switch ($inp) {
         case 0:
-            echo "You have exited";
+            echo "\n === You have exited === \n";
             exit;
         case 1:
             echo "\n === here are your tasks: === \n";
