@@ -8,8 +8,8 @@
 // Ok - 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
 // Ok - 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
 // Ok - 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
-// 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
-// 10) izveidojiet izvēlni, kas ļauj lietotājam dzēt eksistējošu uzdevumu
+// Ok - 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
+// 10) izveidojiet izvēlni, kas ļauj lietotājam dzēst eksistējošu uzdevumu
 
 $tasks = ["first task", "second task", "third task"];
 
@@ -21,11 +21,16 @@ function showAllTasks($inputTasks)
     }
     echo "=========================\n\n";
 }
+function addNewTask(&$inputTasks){
+    $newTask = readline("Enter new task: ");
+    $inputTasks[] = $newTask;
+}
 
 while (true) {
     echo "Task Manager menu\n";
     echo "0 - EXIT\n";
     echo "1 - Display all tasks\n";
+    echo "2 - Add new task\n";
     $input = readline();
 
     switch ($input) {
@@ -36,6 +41,9 @@ while (true) {
             // foreach ($tasks as $task) {
             //     echo $task . "\n";
             // }
+             break;
+        case 2:
+            addNewTask($tasks);
             break;
     }
 }
