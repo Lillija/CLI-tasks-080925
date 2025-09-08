@@ -1,7 +1,7 @@
 <?php
 // Aplikācija "Tasks" jeb uzdevumi
 // Ok - 1) izveidojam jaunu PHP projektu "Tasks" un versionējam
-// 2) izveidojam while ciklu, kas vaicā pēc lietotāja ievades (ar 'readline') katrā iterācijā (iziet ar Ctrl+C)
+// Ok - 2) izveidojam while ciklu, kas vaicā pēc lietotāja ievades (ar 'readline') katrā iterācijā (iziet ar Ctrl+C)
 // 3) while cikls tiek pārtraukts, ja lietotājs ievada "n"
 // 4) izveidojam uzdevumu (tasks) sarakstu kā String elementus izmantojot indeksēta masīva datu struktūru (3 testa elementus)
 // 5) izveidojiet "switch..case" konstrukciju, kas ļauj apstrādāt lietotāja ievadīto izvēli
@@ -13,5 +13,8 @@
 
 
 while(true){
-    readline("Some user input");
+    $input = readline("Some user input");
+    if ($input == 'n'){
+        exit;
+    }
 }
