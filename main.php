@@ -7,7 +7,7 @@
 // Ok - 5) izveidojiet "switch..case" konstrukciju, kas ļauj apstrādāt lietotāja ievadīto izvēli
 // Ok - 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
 // Ok - 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
-// 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
+// Ok - 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
 // 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
 // 10) izveidojiet izvēlni, kas ļauj lietotājam dzēt eksistējošu uzdevumu
 
@@ -15,13 +15,18 @@ $tasks = ["first task", "second task", "third task"];
 
 function showAllTasks($inputTasks)
 {
+    echo "\n=== List of all tasks ===\n";
     foreach ($inputTasks as $task) {
         echo $task . "\n";
     }
+    echo "=========================\n\n";
 }
 
 while (true) {
-    $input = readline("Do you want to continue (0 or 1)?  ");
+    echo "Task Manager menu\n";
+    echo "0 - EXIT\n";
+    echo "1 - Display all tasks\n";
+    $input = readline();
 
     switch ($input) {
         case 0:
