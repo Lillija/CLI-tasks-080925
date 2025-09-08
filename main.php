@@ -11,18 +11,23 @@
 // Ok - 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
 // Ok - 10) izveidojiet izvēlni, kas ļauj lietotājam dzēst eksistējošu uzdevumu
 
-$tasks = ["first task", "second task", "third task"];
+// $tasks = ["first task", "second task", "third task"];
 
-class Task {
+class Task
+{
     public $id;
     public $content;
 
-    public function __construct($id,$content){
+    public function __construct($id, $content)
+    {
         $this->id = $id;
         $this->content = $content;
     }
 
-    public function display(){
+    public function edit() {}
+
+    public function display()
+    {
         echo "\nThe task ID is $this->id\n";
         echo "content: \n $this->content";
     }
@@ -34,17 +39,34 @@ $tasks = [
     new Task(2, "third task"),
 ];
 
-function showAllTasks($inpTasks){
-    foreach($inpTasks as $task){
+function showAllTasks($inpTasks)
+{
+    foreach ($inpTasks as $task) {
         $task->display();
     }
 }
-function addTask(&$inpTasks){
+function addTask(&$inpTasks)
+{
     $newContent = readline("Enter new task \n");
     $newId = count($inpTasks);
     $inpTasks[] = new Task($newId, $newContent);
 }
-function deleteTask(&$inpTasks){
+function editTask(&$inpTasks)
+{
+    echo "Which task would you like to edit?\n";
+    $taskNum = readline("Enter the task number (0-" . (count($inpTasks) - 1) . ") \n");
+    if (isset($inpTasks[$taskNum])) {
+        echo "Current task content: \n";
+        $inpTasks[$taskNum]->display();
+        $newContent = readline("\nEnter new content for this task: \n");
+        $inpTasks[$taskNum]->content = $newContent;
+        echo "Task ID {$inpTasks[$taskNum]->id} has been updated.\n";
+    } else {
+        echo "Invalid task number. Please try again.\n";
+    }
+}
+function deleteTask(&$inpTasks)
+{
     echo "(example: 0. first task, 1. second task)\n";
     $taskNum = readline("Enter the task number (0-10) \n");
     unset($inpTasks[$taskNum]);
@@ -52,29 +74,32 @@ function deleteTask(&$inpTasks){
 }
 
 
-while(true){
-    $inp = readline("Choose 1(one) to show tasks, 2(two) to add a new task, 3(three) to delete a task, 0(zero) to exit. \n");
+while (true) {
+    $inp = readline("Choose 1 - to show tasks, \n 2 - to add a new task, \n 3 - to delete a task, \n 4 - to edit an existing task, \n 0 - to exit. \n");
     switch ($inp) {
         case 0:
             echo "You have exited";
             exit;
         case 1:
-            echo "!! here are your tasks: \n";
-            echo "----------- \n";
+            echo "\n === here are your tasks: === \n";
+            echo "\n ----------- \n";
             showAllTasks($tasks);
             echo "\n ----------- \n";
-            echo "!-- To continue: ";
+            echo "\n=== To continue: ===\n";
             break;
         case 2:
-            echo "!! Enter new task \n";
+            echo "\n === Enter new task ===\n";
             addTask($tasks);
-            echo "!! Task added \n";
+            echo "\n === Task added ===\n";
             break;
         case 3:
-            echo "Which task do you want to delete? \n";
+            echo "\n === Which task do you want to delete? === \n";
             deleteTask($tasks);
-            echo "!! Task deleted \n";
+            echo "\n === Task deleted ===\n";
+            break;
+        case 4:
+            echo "\n === Which task do you want to edit? === \n";
+            editTask($tasks);
             break;
     }
 }
-?>
