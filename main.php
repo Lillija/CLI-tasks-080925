@@ -13,10 +13,6 @@
 
 $tasks = ["first task", "second task", "third task"];
 
-class TaskList{
-    
-}
-
 class Task {
     public $id;
     public $content;
@@ -27,62 +23,57 @@ class Task {
     }
 
     public function display(){
-        echo "The task ID is $this->id";
+        echo "\nThe task ID is $this->id\n";
         echo "content: \n $this->content";
     }
+}
 
-    public function __destruct()
-    {
-        echo "Task with ID $this->id is being deleted.\n";
-        echo "Task with content $this->content is being deleted.\n";
+$tasks = [
+    new Task(0, "first task"),
+    new Task(1, "second task"),
+    new Task(2, "third task"),
+];
+
+function showAllTasks($inpTasks){
+    foreach($inpTasks as $task){
+        $task->display();
     }
 }
-
-function showAllTasks($inputTasks)
-{
-    echo "\n=== List of all tasks ===\n";
-    foreach ($inputTasks as $task) {
-        echo $task . "\n";
-    }
-    echo "=========================\n\n";
+function addTask(&$inpTasks){
+    $newContent = readline("Enter new task \n");
+    $newId = count($inpTasks);
+    $inpTasks[] = new Task($newId, $newContent);
 }
-function addNewTask(&$inputTasks){
-    $newTask = readline("Enter new task: ");
-    $inputTasks[] = $newTask;
-}
-function deleteTask(&$tasks) {
-    showAllTasks($tasks);
-
-    $taskToDelete = readline("Which task do you want to delete? Enter task number (e.g., 1, 2, 3): ");
-
-    if ($taskToDelete >= 1 && $taskToDelete <= count($tasks)) {
-        unset($tasks[$taskToDelete - 1]);
-        $tasks = array_values($tasks);
-        echo "Task $taskToDelete has been deleted.\n";
-    } else {
-        echo "Invalid task number. Please try again.\n";
-    }
+function deleteTask(&$inpTasks){
+    echo "(example: 0. first task, 1. second task)\n";
+    $taskNum = readline("Enter the task number (0-10) \n");
+    unset($inpTasks[$taskNum]);
+    $inpTasks = array_values($inpTasks);
 }
 
-while (true) {
-    echo "Task Manager menu\n";
-    echo "0 - EXIT\n";
-    echo "1 - Display all tasks\n";
-    echo "2 - Add new task\n";
-    echo "3 - Delete a task\n";
-    $input = readline();
 
-    switch ($input) {
+while(true){
+    $inp = readline("Choose 1(one) to show tasks, 2(two) to add a new task, 3(three) to delete a task, 0(zero) to exit. \n");
+    switch ($inp) {
         case 0:
+            echo "You have exited";
             exit;
         case 1:
+            echo "!! here are your tasks: \n";
+            echo "----------- \n";
             showAllTasks($tasks);
+            echo "\n ----------- \n";
+            echo "!-- To continue: ";
             break;
         case 2:
-            addNewTask($tasks);
+            echo "!! Enter new task \n";
+            addTask($tasks);
+            echo "!! Task added \n";
             break;
         case 3:
+            echo "Which task do you want to delete? \n";
             deleteTask($tasks);
+            echo "!! Task deleted \n";
             break;
     }
 }
