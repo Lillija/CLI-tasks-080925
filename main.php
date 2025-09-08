@@ -9,9 +9,18 @@
 // Ok - 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
 // Ok - 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
 // Ok - 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
-// 10) izveidojiet izvēlni, kas ļauj lietotājam dzēst eksistējošu uzdevumu
+// Ok - 10) izveidojiet izvēlni, kas ļauj lietotājam dzēst eksistējošu uzdevumu
 
 $tasks = ["first task", "second task", "third task"];
+
+class Task{
+public $id;
+public $content;
+
+public function display($task){
+    $task->display();
+}
+}
 
 function showAllTasks($inputTasks)
 {
@@ -25,12 +34,26 @@ function addNewTask(&$inputTasks){
     $newTask = readline("Enter new task: ");
     $inputTasks[] = $newTask;
 }
+function deleteTask(&$tasks) {
+    showAllTasks($tasks);
+
+    $taskToDelete = readline("Which task do you want to delete? Enter task number (e.g., 1, 2, 3): ");
+
+    if ($taskToDelete >= 1 && $taskToDelete <= count($tasks)) {
+        unset($tasks[$taskToDelete - 1]);
+        $tasks = array_values($tasks);
+        echo "Task $taskToDelete has been deleted.\n";
+    } else {
+        echo "Invalid task number. Please try again.\n";
+    }
+}
 
 while (true) {
     echo "Task Manager menu\n";
     echo "0 - EXIT\n";
     echo "1 - Display all tasks\n";
     echo "2 - Add new task\n";
+    echo "3 - Delete a task\n";
     $input = readline();
 
     switch ($input) {
@@ -38,12 +61,13 @@ while (true) {
             exit;
         case 1:
             showAllTasks($tasks);
-            // foreach ($tasks as $task) {
-            //     echo $task . "\n";
-            // }
-             break;
+            break;
         case 2:
             addNewTask($tasks);
             break;
+        case 3:
+            deleteTask($tasks);
+            break;
     }
 }
+?>
