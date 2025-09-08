@@ -13,13 +13,19 @@
 
 $tasks = ["first task", "second task", "third task"];
 
-class Task{
-public $id;
-public $content;
+class Task {
+    public $id;
+    public $content;
 
-public function display($task){
-    $task->display();
-}
+    public function __construct($id,$content){
+        $this->id = $id;
+        $this->content = $content;
+    }
+
+    public function display(){
+        echo "The task ID is $this->id";
+        echo "content: \n $this->content";
+    }
 }
 
 function showAllTasks($inputTasks)
