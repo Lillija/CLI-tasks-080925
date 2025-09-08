@@ -6,23 +6,31 @@
 // Ok - 4) izveidojam uzdevumu (tasks) sarakstu kā String elementus izmantojot indeksēta masīva datu struktūru (3 testa elementus)
 // Ok - 5) izveidojiet "switch..case" konstrukciju, kas ļauj apstrādāt lietotāja ievadīto izvēli
 // Ok - 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
-// 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
+// Ok - 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
 // 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
 // 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
 // 10) izveidojiet izvēlni, kas ļauj lietotājam dzēt eksistējošu uzdevumu
 
 $tasks = ["first task", "second task", "third task"];
 
+function showAllTasks($inputTasks)
+{
+    foreach ($inputTasks as $task) {
+        echo $task . "\n";
+    }
+}
+
 while (true) {
     $input = readline("Do you want to continue (0 or 1)?  ");
-    
+
     switch ($input) {
         case 0:
-           exit;
+            exit;
         case 1:
-            foreach($tasks as $task){
-                echo $task . "\n";
-            }
+            showAllTasks($tasks);
+            // foreach ($tasks as $task) {
+            //     echo $task . "\n";
+            // }
             break;
     }
 }
