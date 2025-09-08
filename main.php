@@ -5,7 +5,7 @@
 // Ok - 3) while cikls tiek pārtraukts, ja lietotājs ievada "n"
 // Ok - 4) izveidojam uzdevumu (tasks) sarakstu kā String elementus izmantojot indeksēta masīva datu struktūru (3 testa elementus)
 // Ok - 5) izveidojiet "switch..case" konstrukciju, kas ļauj apstrādāt lietotāja ievadīto izvēli
-// 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
+// Ok - 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
 // 7) uzlabojiet šo 'case: 1' bloku, lai tas izsauktu funkciju, kas atgriež uzdevumus
 // 8) izvadiet lietotāja izvēlnes tekstu, kas to infomē par veicamajām darbībām CLI aplikācijā
 // 9) izveidojiet izvēlni, kas ļauj lietotājam pievienot jaunu uzdevumu
@@ -20,7 +20,9 @@ while (true) {
         case 0:
            exit;
         case 1:
-            echo "input equals 1 ";
+            foreach($tasks as $task){
+                echo $task . "\n";
+            }
             break;
     }
 }
