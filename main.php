@@ -2,7 +2,7 @@
 // Aplikācija "Tasks" jeb uzdevumi
 // Ok - 1) izveidojam jaunu PHP projektu "Tasks" un versionējam
 // Ok - 2) izveidojam while ciklu, kas vaicā pēc lietotāja ievades (ar 'readline') katrā iterācijā (iziet ar Ctrl+C)
-// 3) while cikls tiek pārtraukts, ja lietotājs ievada "n"
+// Ok - 3) while cikls tiek pārtraukts, ja lietotājs ievada "n"
 // 4) izveidojam uzdevumu (tasks) sarakstu kā String elementus izmantojot indeksēta masīva datu struktūru (3 testa elementus)
 // 5) izveidojiet "switch..case" konstrukciju, kas ļauj apstrādāt lietotāja ievadīto izvēli
 // 6) pievienojiet 'case' jeb gadījumu '1', kuru ievadot lietotājam tiek izvadīts viss uzdevumu saraksts
