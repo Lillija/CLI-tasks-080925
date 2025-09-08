@@ -26,6 +26,12 @@ class Task {
         echo "The task ID is $this->id";
         echo "content: \n $this->content";
     }
+
+    public function __destruct()
+    {
+        echo "Task with ID $this->id is being deleted.\n";
+        echo "Task with content $this->content is being deleted.\n";
+    }
 }
 
 function showAllTasks($inputTasks)
